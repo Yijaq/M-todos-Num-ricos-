@@ -5,7 +5,6 @@ Created on Wed Sep 22 13:29:12 2021
 
 @author: YilberQuinto
 """
-
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -20,17 +19,13 @@ def Runge_Kutta_4(a, b, h0, y0, fun):
     Parameters
     ----------
     a : Float
-        Condición inicial en t (a = t0). extremo izq del intervalo [a,b]
-        
+        Condición inicial en t (a = t0). extremo izq del intervalo [a,b]        
     b : Float
-        Extremo derecho del intervalo [a,b].
-        
+        Extremo derecho del intervalo [a,b].    
     h : float
         Tamaño de paso en t.
-        
     y0 : Float
         Condicion inicial en y.
-        
     fun : funtion 
         Función de dos variables f(t,y).
         
@@ -38,7 +33,6 @@ def Runge_Kutta_4(a, b, h0, y0, fun):
     Returns
     -------
     Aproximación w para y. 
-
     '''
     
     t = a 
@@ -46,19 +40,15 @@ def Runge_Kutta_4(a, b, h0, y0, fun):
     y = y0
     list_t = []
     list_y = []
-    
     while t < b + h: 
         list_t.append(t)
-        list_y.append(y)
-        
+        list_y.append(y)  
         K1 = fun(t,y)
         K2 = fun(t + h/2, y + h*K1/2)
         K3 = fun(t + h/2, y + h*K2/2)
         K4 = fun(t + h, y + h*K3)
-        
         y = y + h*(K1 + 2*K2 + 2*K3 + K4)/6
-        t = t + h 
-            
+        t = t + h            
     return [list_t, list_y]   
         
 #%%
