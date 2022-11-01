@@ -9,7 +9,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-def newton(f, df, x0, tol, M):
+def newton(f, df, x0, M, tol = 1e-5):
     '''
     
 
@@ -52,7 +52,7 @@ def newton(f, df, x0, tol, M):
         error.append(float(f'{e:.9f}'))
         
         if e < tol:
-            df = pd.DataFrame({'x_n':valores,'e_n':error})
+            df = pd.DataFrame({'x_n': valores,'e_n': error})
             df.to_excel('Tabla_método_Newton.xlsx') 
             print(pd.read_excel("Tabla_método_Newton.xlsx",index_col=0))
             print('')
@@ -143,7 +143,7 @@ def dfun18a2(x):
 
 #-----------------------------------------------------------------------------
         
-x =  newton(fun13, dfun13, 4, 1e-5, 50)
+x =  newton(fun13, dfun13, 4, 50)
 
 
 #%%

@@ -12,7 +12,7 @@ import pandas as pd
 
 
 
-def gauss_seidel(A, b, x0, tol, M):
+def gauss_seidel(A, b, x0, M = 100, tol = 1e-5):
     '''
     El método de Jacobi es un método iterativo utilizado para resolver sistemas
     lineales Ax = b.
@@ -45,13 +45,12 @@ def gauss_seidel(A, b, x0, tol, M):
     a = A
     
     lista = [x0]
-    lista_error = [np.nan]
-    
-    for k in np.arange(M + 1):
-        
-        list_xi = [] 
-        
-                   
+    lista_error = [np.nan] 
+
+    for k in np.arange(M + 1):   
+
+        list_xi = []   
+
         for i in np.arange(n):  
             
             suma1 = 0
@@ -64,9 +63,7 @@ def gauss_seidel(A, b, x0, tol, M):
             
             xi = 1/a[i][i] * (b[i] - suma1 - suma2)
             list_xi.append(xi)    
-                
-            
-            
+                     
         x = np.array(list_xi)
         error = np.linalg.norm(x - x0)         # Norma euclideana de x - x0
            
@@ -92,4 +89,4 @@ A = np.array([[5, -1, 1], [2, 8, -1], [-1, 1, 4]])
 b = np.array([10, 11, 3])
 x0 = np.array([0, 0, 0])
 
-x = gauss_seidel(A, b, x0, 1e-5, 15)
+x = gauss_seidel(A, b, x0, 15)
